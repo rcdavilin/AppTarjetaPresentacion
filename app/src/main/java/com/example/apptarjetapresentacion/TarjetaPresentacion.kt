@@ -72,7 +72,7 @@ fun TarjetaPersonal(telefono: String, pagina:String, email: String,
 
 
            ) {
-               Row() {
+               Row {
                    Text(
                        text = "Telefono: $telefono",
                        modifier = modifier
@@ -85,7 +85,7 @@ fun TarjetaPersonal(telefono: String, pagina:String, email: String,
 
                }
 
-               Row() {
+               Row {
                    Text(
                        text = "Pagina Web: $pagina",
                        modifier = modifier
@@ -97,7 +97,7 @@ fun TarjetaPersonal(telefono: String, pagina:String, email: String,
 
 
                }
-               Row() {
+               Row {
                    Text(
                        text = "Correo Electronico: $email",
                        modifier = modifier
@@ -116,7 +116,7 @@ fun TarjetaPersonal(telefono: String, pagina:String, email: String,
        }
         Column(
             modifier = Modifier
-                .fillMaxWidth().padding(16.dp).align(Alignment.Center),
+                .fillMaxWidth().padding(16.dp).align(Alignment.CenterStart)
 
 
             ) {
@@ -142,7 +142,8 @@ fun TarjetaPersonal(telefono: String, pagina:String, email: String,
 
 
                 ) {
-                Row() {
+
+                Row {
                     Text(
                         text = "Nombre: $nombre",
                         modifier = modifier
@@ -155,7 +156,7 @@ fun TarjetaPersonal(telefono: String, pagina:String, email: String,
 
                 }
 
-                Row() {
+                Row {
                     Text(
                         text = "Info personal: \n $info",
                         modifier = modifier
