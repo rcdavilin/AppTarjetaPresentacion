@@ -116,7 +116,7 @@ fun TarjetaPersonal(telefono: String, pagina:String, email: String,
        }
         Column(
             modifier = Modifier
-                .fillMaxWidth().padding(16.dp).align(Alignment.CenterStart)
+                .fillMaxWidth().padding(16.dp).align(Alignment.Center)
 
 
             ) {
