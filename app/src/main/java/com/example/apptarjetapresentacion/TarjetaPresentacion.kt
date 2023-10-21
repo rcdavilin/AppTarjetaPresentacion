@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -21,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -36,8 +38,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    TarjetaPersonal("640830203","rcdavilin.es","rdavilin@gmail.com","David Martin",
-                        "Estudiante \n Ies virgen de la Paloma \n 2ºCurso de DAM ")
+                    TarjetaPersonal(
+                        "640830203", "davidmartin.es", "David@gmail.com", "David Martin",
+                        "Estudiante \n Ies virgen de la Paloma \n 2ºCurso de DAM "
+                    )
                 }
             }
         }
@@ -45,107 +49,49 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun TarjetaPersonal(telefono: String, pagina:String, email: String,
-                    nombre: String, info:String, modifier: Modifier = Modifier) {
-    val image = painterResource(R.drawable.valo)
+fun TarjetaPersonal(
+    telefono: String, pagina: String, email: String,
+    nombre: String, info: String, modifier: Modifier = Modifier
+) {
+    val image = painterResource(R.drawable.avatar)
+
 
     Box(
         modifier = modifier
-            .fillMaxSize()
-            .background(Color.Red)
+            .size(750.dp)
+            .background(
+                Color(51, 66, 255)
+            )
             .padding(20.dp)
+
 
     )
 
     {
-       Box(modifier = modifier
-           .fillMaxWidth()
-           .background(Color.Black)
-           .padding(20.dp)
-           .align(Alignment.TopCenter)) {
-           Column (
-               modifier = modifier
-                   .fillMaxWidth()
-                   .background(Color.White)
-                   .padding(16.dp)
-                   .align(Alignment.TopCenter),
-
-
-           ) {
-               Row {
-                   Text(
-                       text = "Telefono: $telefono",
-                       modifier = modifier
-                           .fillMaxWidth()
-                           .padding(16.dp),
-                       fontWeight = FontWeight.Bold,
-                       fontSize = 18.sp
-                   )
-
-
-               }
-
-               Row {
-                   Text(
-                       text = "Pagina Web: $pagina",
-                       modifier = modifier
-                           .fillMaxWidth()
-                           .padding(16.dp),
-                       fontWeight = FontWeight.Bold,
-                       fontSize = 18.sp
-                   )
-
-
-               }
-               Row {
-                   Text(
-                       text = "Correo Electronico: $email",
-                       modifier = modifier
-                           .fillMaxWidth()
-                           .padding(16.dp),
-                       fontWeight = FontWeight.Bold,
-                       fontSize = 18.sp
-
-                   )
-
-
-               }
-
-
-           }
-       }
-        Column(
-            modifier = Modifier
-                .fillMaxWidth().padding(16.dp).align(Alignment.Center)
-
-
-            ) {
-            Image(
-                painter = image,
-                contentDescription = null,
-                contentScale = ContentScale.FillWidth
-
-            )
-        }
-
-        Box(modifier = modifier
-            .fillMaxWidth()
-            .background(Color.Black)
-            .padding(20.dp)
-            .align(Alignment.BottomCenter)) {
-            Column (
+        Box(
+            modifier = modifier
+                .size(750.dp)
+                .background(
+                    Color(173, 216, 230)
+                )
+                .padding(20.dp)
+                .align(Alignment.TopCenter)
+        ) {
+            Column(
                 modifier = modifier
-                    .fillMaxWidth()
+                    .size(750.dp)
                     .background(Color.White)
                     .padding(16.dp)
                     .align(Alignment.BottomCenter),
 
 
                 ) {
-
                 Row {
+
+
                     Text(
-                        text = "Nombre: $nombre",
+
+                        text = "\uD83D\uDCF1 $telefono",
                         modifier = modifier
                             .fillMaxWidth()
                             .padding(16.dp),
@@ -157,8 +103,9 @@ fun TarjetaPersonal(telefono: String, pagina:String, email: String,
                 }
 
                 Row {
+
                     Text(
-                        text = "Info personal: \n $info",
+                        text = "\uD83C\uDF10 $pagina",
                         modifier = modifier
                             .fillMaxWidth()
                             .padding(16.dp),
@@ -168,7 +115,60 @@ fun TarjetaPersonal(telefono: String, pagina:String, email: String,
 
 
                 }
+                Row {
 
+                    Text(
+                        text = "\uD83D\uDCE7 $email",
+                        modifier = modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 18.sp
+
+                    )
+
+
+                }
+
+                Row(
+                    modifier = modifier.padding(16.dp)
+
+
+                ) {
+                    Image(
+                        painter = image,
+                        contentDescription = null,
+                        contentScale = ContentScale.FillWidth
+
+
+                    )
+                }
+
+                Row {
+                    Text(
+                        text =  nombre,
+                        modifier = modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 18.sp,
+                        textAlign = TextAlign.Center
+                    )
+
+
+                }
+
+                Row(modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        text = info,
+                        modifier = modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 18.sp,
+                        textAlign = TextAlign.Center
+
+                    )
 
 
                 }
@@ -180,15 +180,16 @@ fun TarjetaPersonal(telefono: String, pagina:String, email: String,
 
     }
 
-
-
+}
 
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     AppTarjetaPresentacionTheme {
-        TarjetaPersonal("640830203","rcdavilin.es","rdavilin@gmail.com","David Martin",
-            "Estudiante \n Ies virgen de la Paloma \n 2ºCurso de DAM ")
+        TarjetaPersonal(
+            "640830203", "davidmartin.es", "David@gmail.com", "David Martin",
+            "Estudiante \n Ies virgen de la Paloma \n 2ºCurso de DAM "
+        )
     }
 }
