@@ -185,7 +185,7 @@ fun TarjetaPersonal(
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun TarjetaPreview() {
     AppTarjetaPresentacionTheme {
         TarjetaPersonal(
             "640830203", "davidmartin.es", "David@gmail.com", "David Martin",
