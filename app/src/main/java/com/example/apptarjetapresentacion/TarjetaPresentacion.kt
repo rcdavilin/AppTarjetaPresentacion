@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     TarjetaPersonal(
                         "640830203", "davidmartin.es", "David@gmail.com", "David Martin",
-                        "Estudiante \n Ies virgen de la Paloma \n 2ºCurso de DAM "
+                        "Estudiante \n Ies Virgen de la Paloma \n 2ºCurso de DAM "
                     )
                 }
             }
@@ -189,7 +189,7 @@ fun TarjetaPreview() {
     AppTarjetaPresentacionTheme {
         TarjetaPersonal(
             "640830203", "davidmartin.es", "David@gmail.com", "David Martin",
-            "Estudiante \n Ies virgen de la Paloma \n 2ºCurso de DAM "
+            "Estudiante \n Ies Virgen de la Paloma \n 2ºCurso de DAM "
         )
     }
 }
