@@ -12,12 +12,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -130,7 +132,7 @@ fun TarjetaPersonal(
 
                 }
 
-                Row(
+                Column(
                     modifier = modifier.padding(16.dp)
 
 
@@ -138,7 +140,8 @@ fun TarjetaPersonal(
                     Image(
                         painter = image,
                         contentDescription = null,
-                        contentScale = ContentScale.FillWidth
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier.size(250.dp).clip(CircleShape)
 
 
                     )
@@ -166,7 +169,8 @@ fun TarjetaPersonal(
                             .padding(16.dp),
                         fontWeight = FontWeight.Bold,
                         fontSize = 18.sp,
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Center,
+
 
                     )
 
@@ -188,7 +192,7 @@ fun TarjetaPersonal(
 fun TarjetaPreview() {
     AppTarjetaPresentacionTheme {
         TarjetaPersonal(
-            "640830203", "davidmartin.es", "David@gmail.com", "David Martin",
+            "640830203", "davidmartin.es", "David@gmail.com", "David Martin Jiménez",
             "Estudiante \n Ies Virgen de la Paloma \n 2ºCurso de DAM "
         )
     }
