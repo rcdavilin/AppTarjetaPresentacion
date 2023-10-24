@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -43,13 +44,9 @@ class MainActivity : ComponentActivity() {
             AppTarjetaPresentacionTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
                 ) {
-                    TarjetaPersonal(
-                        "davidmartin.es", "David@gmail.com", "David Martin",
-                        "Estudiante \n Ies Virgen de la Paloma \n 2ºCurso de DAM "
-                    )
+                    ProductoFinal()
                 }
             }
         }
@@ -57,9 +54,8 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun TarjetaPersonal(
-     pagina: String, email: String,
-    nombre: String, info: String, modifier: Modifier = Modifier
+fun TarjetaPersonalVertical(
+    pagina: String, email: String, nombre: String, info: String, modifier: Modifier = Modifier
 ) {
     val image = painterResource(R.drawable.avatar)
 
@@ -96,17 +92,6 @@ fun TarjetaPersonal(
                 ) {
                 Row {
                     Prueba()
-                    // Text(
-
-                    // text = "\uD83D\uDCF1 $telefono",
-
-                    //  modifier = modifier
-                    //     .fillMaxWidth()
-                    //      .padding(16.dp),
-                    //  fontWeight = FontWeight.Bold,
-                    //  fontSize = 18.sp
-                    // )
-
 
                 }
 
@@ -148,7 +133,7 @@ fun TarjetaPersonal(
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
-                            .size(270.dp)
+                            .size(250.dp)
                             .clip(CircleShape)
 
 
@@ -169,7 +154,7 @@ fun TarjetaPersonal(
 
                 }
 
-                Row(modifier = Modifier.fillMaxWidth()) {
+                Row{
                     Text(
                         text = info,
                         modifier = modifier
@@ -194,32 +179,157 @@ fun TarjetaPersonal(
 
 }
 
+@Composable
+fun TarjetaPersonalHorizontal(
+    pagina: String, email: String, nombre: String, info: String, modifier: Modifier = Modifier
+) {
+    val image = painterResource(R.drawable.avatar)
+
+    Box(
+        modifier = modifier
+            .size(750.dp)
+            .background(
+                Color(51, 66, 255)
+            )
+            .padding(20.dp)
+
+
+    )
+
+    {
+        Box(
+            modifier = modifier
+                .size(750.dp)
+                .background(
+                    Color(173, 216, 230)
+                )
+                .padding(20.dp)
+                .align(Alignment.TopCenter)
+        ) {
+            Box(
+                modifier = modifier
+                    .size(750.dp)
+                    .background(Color.White)
+                    .padding(16.dp)
+                    .align(Alignment.BottomCenter),
+
+
+                ) {
+                Column(
+                    modifier = modifier
+                        .fillMaxHeight()
+                        .align(Alignment.CenterStart)
+                ) {
+                    Row {
+                       Prueba()
+                    }
+                    Row {
+                        Text(
+                            text = "\uD83C\uDF10 $pagina",
+                            modifier = modifier
+                                .fillMaxWidth()
+                                .padding(8.dp),
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 18.sp
+                        )
+                    }
+                    Row {
+                        Text(
+                            text = "\uD83D\uDCE7 $email",
+                            modifier = modifier
+                                .fillMaxWidth()
+                                .padding(8.dp),
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 18.sp
+                        )
+
+                    }
+
+
+                }
+                Column(
+                    modifier = modifier
+                        .fillMaxHeight()
+                        .align(Alignment.Center)
+                ) {
+                    Image(
+                        painter = image,
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .size(200.dp)
+                            .clip(CircleShape)
+
+
+                    )
+
+                }
+                Column(
+                    modifier = modifier
+                        .fillMaxHeight()
+                        .align(Alignment.CenterEnd)
+                ) {
+                    Row {
+                        Text(
+                            text = nombre,
+                            modifier = modifier
+                                .fillMaxHeight()
+                                .padding(8.dp),
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 18.sp,
+                            textAlign = TextAlign.Center
+                        )
+
+                    }
+                    Row {
+                        Text(
+                            text = info,
+                            modifier = modifier
+
+                                .padding(8.dp),
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 18.sp,
+                            textAlign = TextAlign.Center,
+
+
+                            )
+
+                    }
+
+                }
+
+            }
+
+        }
+    }
+
+
+}
+
 
 @Preview(showBackground = true)
 @Composable
 fun TarjetaPreview() {
     AppTarjetaPresentacionTheme {
-        TarjetaPersonal(
-             "davidmartin.es", "David@gmail.com", "David Martin Jiménez",
-            "Estudiante \n Ies Virgen de la Paloma \n 2ºCurso de DAM "
-        )
+        ProductoFinal()
     }
 }
 
 @Composable
 fun Prueba() {
-    val phone = "\uD83D\uDCF1 640830203"
+    val phone = "\uD83D\uDCF1 \t 640830203"
     val context = LocalContext.current
     TextButton(
         onClick = {
-            val textPhone = phone
+
             val intent = Intent(Intent.ACTION_DIAL)
-            intent.data = Uri.parse(textPhone)
+            intent.data = Uri.parse(phone)
             startActivity(context, intent, null)
         },
     ) {
         Text(
-            text = phone, fontSize = 18.sp,
+            text = phone,
+            fontSize = 18.sp,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(4.dp),
@@ -233,9 +343,19 @@ fun Prueba() {
 fun ProductoFinal() {
     BoxWithConstraints(Modifier.fillMaxSize()) {
         if (maxWidth < 500.dp) {
-
+            TarjetaPersonalVertical(
+                "davidmartin.es",
+                "David@gmail.com",
+                "David Martin Jiménez",
+                "Estudiante \n Ies Virgen de la Paloma \n 2ºCurso de DAM "
+            )
         } else {
-
+            TarjetaPersonalHorizontal(
+                "davidmartin.es",
+                "David@gmail.com",
+                "David Martin Jiménez",
+                "Estudiante \n Ies Virgen de la Paloma \n 2ºCurso de DAM "
+            )
         }
     }
 }
