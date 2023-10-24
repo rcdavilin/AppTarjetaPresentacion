@@ -1,109 +1,5 @@
 package com.example.apptarjetapresentacion
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.example.apptarjetapresentacion.ui.theme.AppTarjetaPresentacionTheme
-
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            AppTarjetaPresentacionTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    TarjetaPersonal(
-                        "640830203", "davidmartin.es", "David@gmail.com", "David Martin",
-                        "Estudiante \n Ies Virgen de la Paloma \n 2ºCurso de DAM "
-                    )
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun TarjetaPersonal(
-    telefono: String, pagina: String, email: String,
-    nombre: String, info: String, modifier: Modifier = Modifier
-) {
-    val image = painterResource(R.drawable.avatar)
-
-
-    Box(
-        modifier = modifier
-            .size(750.dp)
-            .background(
-                Color(51, 66, 255)
-            )
-            .padding(20.dp)
-
-
-    )
-
-    {
-        Box(
-            modifier = modifier
-                .size(750.dp)
-                .background(
-                    Color(173, 216, 230)
-                )
-                .padding(20.dp)
-                .align(Alignment.TopCenter)
-        ) {
-            Column(
-                modifier = modifier
-                    .size(750.dp)
-                    .background(Color.White)
-                    .padding(16.dp)
-                    .align(Alignment.BottomCenter),
-
-
-                ) {
-                Row {
-
-
-                    Text(
-
-                        text = "\uD83D\uDCF1 $telefono",
-                        modifier = modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 18.sp
-                    )
-
-
-                }package com.example.apptarjetapresentacion
-
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -137,7 +33,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import com.example.apptarjetapresentacion.ui.theme.AppTarjetaPresentacionTheme
 
@@ -152,7 +47,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     TarjetaPersonal(
-                        "640830203", "davidmartin.es", "David@gmail.com", "David Martin",
+                        "davidmartin.es", "David@gmail.com", "David Martin",
                         "Estudiante \n Ies Virgen de la Paloma \n 2ºCurso de DAM "
                     )
                 }
@@ -163,7 +58,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TarjetaPersonal(
-    telefono: String, pagina: String, email: String,
+     pagina: String, email: String,
     nombre: String, info: String, modifier: Modifier = Modifier
 ) {
     val image = painterResource(R.drawable.avatar)
@@ -201,16 +96,16 @@ fun TarjetaPersonal(
                 ) {
                 Row {
                     Prueba()
-                   // Text(
+                    // Text(
 
-                       // text = "\uD83D\uDCF1 $telefono",
+                    // text = "\uD83D\uDCF1 $telefono",
 
-                      //  modifier = modifier
-                       //     .fillMaxWidth()
-                      //      .padding(16.dp),
-                      //  fontWeight = FontWeight.Bold,
-                      //  fontSize = 18.sp
-                   // )
+                    //  modifier = modifier
+                    //     .fillMaxWidth()
+                    //      .padding(16.dp),
+                    //  fontWeight = FontWeight.Bold,
+                    //  fontSize = 18.sp
+                    // )
 
 
                 }
@@ -262,7 +157,7 @@ fun TarjetaPersonal(
 
                 Row {
                     Text(
-                        text =  nombre,
+                        text = nombre,
                         modifier = modifier
                             .fillMaxWidth()
                             .padding(16.dp),
@@ -285,7 +180,7 @@ fun TarjetaPersonal(
                         textAlign = TextAlign.Center,
 
 
-                    )
+                        )
 
 
                 }
@@ -305,36 +200,41 @@ fun TarjetaPersonal(
 fun TarjetaPreview() {
     AppTarjetaPresentacionTheme {
         TarjetaPersonal(
-            "640830203", "davidmartin.es", "David@gmail.com", "David Martin Jiménez",
+             "davidmartin.es", "David@gmail.com", "David Martin Jiménez",
             "Estudiante \n Ies Virgen de la Paloma \n 2ºCurso de DAM "
         )
     }
 }
 
 @Composable
-fun Prueba(){
+fun Prueba() {
     val phone = "\uD83D\uDCF1 640830203"
     val context = LocalContext.current
     TextButton(
         onClick = {
             val textPhone = phone
             val intent = Intent(Intent.ACTION_DIAL)
-            intent.data= Uri.parse(textPhone)
-            startActivity(context,intent,null)
-        },) {
-        Text(text =phone, fontSize = 18.sp ,
-            modifier = Modifier.fillMaxWidth().padding(4.dp),
-            textAlign = TextAlign.Left)
+            intent.data = Uri.parse(textPhone)
+            startActivity(context, intent, null)
+        },
+    ) {
+        Text(
+            text = phone, fontSize = 18.sp,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(4.dp),
+            textAlign = TextAlign.Left
+        )
 
     }
 }
 
 @Composable
-fun ProductoFinal(){
+fun ProductoFinal() {
     BoxWithConstraints(Modifier.fillMaxSize()) {
-        if(maxWidth < 500.dp){
+        if (maxWidth < 500.dp) {
 
-        }else{
+        } else {
 
         }
     }
