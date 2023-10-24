@@ -141,7 +141,7 @@ fun TarjetaPersonal(
                         painter = image,
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
-                        modifier = Modifier.size(250.dp).clip(CircleShape)
+                        modifier = Modifier.size(270.dp).clip(CircleShape)
 
 
                     )
