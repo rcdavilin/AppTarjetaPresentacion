@@ -96,15 +96,6 @@ fun TarjetaPersonalVertical(
 
                 Row {
                     BotonURL()
-                    // Text(
-                    //  text = "\uD83C\uDF10 $pagina",
-                    // modifier = modifier
-                    //    .fillMaxWidth()
-                    //    .padding(16.dp),
-                    // fontWeight = FontWeight.Bold,
-                    //  fontSize = 18.sp
-                    //  )
-
 
                 }
                 Row {
@@ -222,14 +213,7 @@ fun TarjetaPersonalHorizontal(
                     }
                     Row {
                         BotonURL()
-                        // Text(
-                        //  text = "\uD83C\uDF10 $pagina",
-                        // modifier = modifier
-                        //    .fillMaxWidth()
-                        //     .padding(8.dp),
-                        // fontWeight = FontWeight.Bold,
-                        //  fontSize = 18.sp
-                        // )
+
                     }
                     Row {
                         Text(
@@ -255,7 +239,7 @@ fun TarjetaPersonalHorizontal(
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
-                            .size(200.dp)
+                            .size(190.dp)
                             .clip(CircleShape)
                             .padding(8.dp)
 
@@ -339,7 +323,7 @@ fun BotonNumero() {
 
 @Composable
 fun BotonURL() {
-    val url = "https://a.com"
+    val url = "https://github.com/rcdavilin"
     val localContext = LocalContext.current
     TextButton(onClick = {
 
@@ -349,10 +333,10 @@ fun BotonURL() {
     }) {
         Text(
             text = "\uD83C\uDF10 $url",
-            fontSize = 18.sp,
+            fontSize = 15.sp,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(4.dp),
+                .padding(2.dp),
             textAlign = TextAlign.Left
         )
 
