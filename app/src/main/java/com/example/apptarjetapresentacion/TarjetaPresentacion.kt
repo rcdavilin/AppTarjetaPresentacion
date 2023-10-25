@@ -54,7 +54,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TarjetaPersonalVertical(
-    pagina: String, email: String, nombre: String, info: String, modifier: Modifier = Modifier
+    email: String, nombre: String, info: String, modifier: Modifier = Modifier
 ) {
     val image = painterResource(R.drawable.avatar)
 
@@ -90,25 +90,24 @@ fun TarjetaPersonalVertical(
 
                 ) {
                 Row {
-                    Prueba()
+                    BotonNumero()
 
                 }
 
                 Row {
-
-                    Text(
-                        text = "\uD83C\uDF10 $pagina",
-                        modifier = modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 18.sp
-                    )
+                    BotonURL()
+                    // Text(
+                    //  text = "\uD83C\uDF10 $pagina",
+                    // modifier = modifier
+                    //    .fillMaxWidth()
+                    //    .padding(16.dp),
+                    // fontWeight = FontWeight.Bold,
+                    //  fontSize = 18.sp
+                    //  )
 
 
                 }
                 Row {
-
                     Text(
                         text = "\uD83D\uDCE7 $email",
                         modifier = modifier
@@ -180,7 +179,7 @@ fun TarjetaPersonalVertical(
 
 @Composable
 fun TarjetaPersonalHorizontal(
-    pagina: String, email: String, nombre: String, info: String, modifier: Modifier = Modifier
+    email: String, nombre: String, info: String, modifier: Modifier = Modifier
 ) {
     val image = painterResource(R.drawable.avatar)
 
@@ -219,17 +218,18 @@ fun TarjetaPersonalHorizontal(
                         .align(Alignment.CenterStart)
                 ) {
                     Row {
-                        Prueba()
+                        BotonNumero()
                     }
                     Row {
-                        Text(
-                            text = "\uD83C\uDF10 $pagina",
-                            modifier = modifier
-                                .fillMaxWidth()
-                                .padding(8.dp),
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 18.sp
-                        )
+                        BotonURL()
+                        // Text(
+                        //  text = "\uD83C\uDF10 $pagina",
+                        // modifier = modifier
+                        //    .fillMaxWidth()
+                        //     .padding(8.dp),
+                        // fontWeight = FontWeight.Bold,
+                        //  fontSize = 18.sp
+                        // )
                     }
                     Row {
                         Text(
@@ -256,7 +256,8 @@ fun TarjetaPersonalHorizontal(
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .size(200.dp)
-                            .clip(CircleShape).padding(8.dp)
+                            .clip(CircleShape)
+                            .padding(8.dp)
 
 
                     )
@@ -265,7 +266,8 @@ fun TarjetaPersonalHorizontal(
                 Column(
                     modifier = modifier
 
-                        .align(Alignment.CenterEnd).padding(3.dp)
+                        .align(Alignment.CenterEnd)
+                        .padding(3.dp)
                 ) {
                     Row {
                         Text(
@@ -314,19 +316,17 @@ fun TarjetaPreview() {
 }
 
 @Composable
-fun Prueba() {
-    val phone = "\uD83D\uDCF1 \t 640830203"
-    val context = LocalContext.current
-    TextButton(
-        onClick = {
-
-            val intent = Intent(Intent.ACTION_DIAL)
-            intent.data = Uri.parse(phone)
-            startActivity(context, intent, null)
-        },
-    ) {
+fun BotonNumero() {
+    val numeroTelefono = 666666666
+    val localContext = LocalContext.current
+    TextButton(onClick = {
+        val textPhone = "tel: $numeroTelefono"
+        val intento = Intent(Intent.ACTION_DIAL)
+        intento.data = Uri.parse(textPhone)
+        startActivity(localContext, intento, null)
+    }) {
         Text(
-            text = phone,
+            text = "\uD83D\uDCF1 $numeroTelefono",
             fontSize = 18.sp,
             modifier = Modifier
                 .fillMaxWidth()
@@ -338,18 +338,41 @@ fun Prueba() {
 }
 
 @Composable
+fun BotonURL() {
+    val url = "https://a.com"
+    val localContext = LocalContext.current
+    TextButton(onClick = {
+
+        val intento = Intent(Intent.ACTION_VIEW)
+        intento.data = Uri.parse(url)
+        startActivity(localContext, intento, null)
+    }) {
+        Text(
+            text = "\uD83C\uDF10 $url",
+            fontSize = 18.sp,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(4.dp),
+            textAlign = TextAlign.Left
+        )
+
+    }
+}
+
+
+@Composable
 fun ProductoFinal() {
     BoxWithConstraints(Modifier.size(750.dp)) {
         if (maxWidth < 500.dp) {
             TarjetaPersonalVertical(
-                "davidmartin.es",
+
                 "David@gmail.com",
                 "David Martin Jiménez",
                 "Estudiante \n Ies Virgen de la Paloma \n 2ºCurso de DAM "
             )
         } else {
             TarjetaPersonalHorizontal(
-                "davidmartin.es",
+
                 "David@gmail.com",
                 "David Martin Jiménez",
                 "Estudiante \n Ies Virgen de la Paloma \n 2ºCurso de DAM "
