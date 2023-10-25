@@ -216,6 +216,7 @@ fun TarjetaPersonalHorizontal(
 
                     }
                     Row {
+
                         Text(
                             text = "\uD83D\uDCE7 $email",
                             modifier = modifier
@@ -336,7 +337,29 @@ fun BotonURL() {
             fontSize = 15.sp,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(2.dp),
+                .padding(4.dp),
+            textAlign = TextAlign.Left
+        )
+
+    }
+}
+
+@Composable
+fun BotonEmail() {
+    val email = "david@gmail.com"
+    val localContext = LocalContext.current
+    TextButton(onClick = {
+
+        val intento = Intent(Intent.ACTION_DIAL)
+        intento.data = Uri.parse(email)
+        startActivity(localContext, intento, null)
+    }) {
+        Text(
+            text = "\uD83D\uDCE7 $email",
+            fontSize = 18.sp,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(4.dp),
             textAlign = TextAlign.Left
         )
 
