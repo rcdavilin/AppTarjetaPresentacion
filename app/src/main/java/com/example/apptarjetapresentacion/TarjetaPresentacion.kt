@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -154,7 +153,7 @@ fun TarjetaPersonalVertical(
 
                 }
 
-                Row{
+                Row {
                     Text(
                         text = info,
                         modifier = modifier
@@ -204,24 +203,23 @@ fun TarjetaPersonalHorizontal(
                     Color(173, 216, 230)
                 )
                 .padding(20.dp)
-                .align(Alignment.TopCenter)
+
         ) {
             Box(
                 modifier = modifier
                     .size(750.dp)
                     .background(Color.White)
-                    .padding(16.dp)
-                    .align(Alignment.BottomCenter),
+                    .padding(8.dp)
 
 
-                ) {
+            ) {
                 Column(
                     modifier = modifier
-                        .fillMaxHeight()
+
                         .align(Alignment.CenterStart)
                 ) {
                     Row {
-                       Prueba()
+                        Prueba()
                     }
                     Row {
                         Text(
@@ -249,7 +247,7 @@ fun TarjetaPersonalHorizontal(
                 }
                 Column(
                     modifier = modifier
-                        .fillMaxHeight()
+
                         .align(Alignment.Center)
                 ) {
                     Image(
@@ -258,7 +256,7 @@ fun TarjetaPersonalHorizontal(
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .size(200.dp)
-                            .clip(CircleShape)
+                            .clip(CircleShape).padding(8.dp)
 
 
                     )
@@ -266,17 +264,17 @@ fun TarjetaPersonalHorizontal(
                 }
                 Column(
                     modifier = modifier
-                        .fillMaxHeight()
-                        .align(Alignment.CenterEnd)
+
+                        .align(Alignment.CenterEnd).padding(3.dp)
                 ) {
                     Row {
                         Text(
                             text = nombre,
                             modifier = modifier
-                                .fillMaxHeight()
+
                                 .padding(8.dp),
                             fontWeight = FontWeight.Bold,
-                            fontSize = 18.sp,
+                            fontSize = 16.sp,
                             textAlign = TextAlign.Center
                         )
 
@@ -288,7 +286,7 @@ fun TarjetaPersonalHorizontal(
 
                                 .padding(8.dp),
                             fontWeight = FontWeight.Bold,
-                            fontSize = 18.sp,
+                            fontSize = 16.sp,
                             textAlign = TextAlign.Center,
 
 
