@@ -339,7 +339,7 @@ fun Prueba() {
 
 @Composable
 fun ProductoFinal() {
-    BoxWithConstraints(Modifier.fillMaxSize()) {
+    BoxWithConstraints(Modifier.size(750.dp)) {
         if (maxWidth < 500.dp) {
             TarjetaPersonalVertical(
                 "davidmartin.es",
