@@ -54,7 +54,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TarjetaPersonalVertical(
-    email: String, nombre: String, info: String, modifier: Modifier = Modifier
+     nombre: String, info: String, modifier: Modifier = Modifier
 ) {
     val image = painterResource(R.drawable.avatar)
 
@@ -99,15 +99,16 @@ fun TarjetaPersonalVertical(
 
                 }
                 Row {
-                    Text(
-                        text = "\uD83D\uDCE7 $email",
-                        modifier = modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 18.sp
+                    BotonEmail()
+                    //Text(
+                      //  text = "\uD83D\uDCE7 $email",
+                       // modifier = modifier
+                       //     .fillMaxWidth()
+                       //     .padding(16.dp),
+                      //  fontWeight = FontWeight.Bold,
+                      //  fontSize = 18.sp
 
-                    )
+                   // )
 
 
                 }
@@ -170,7 +171,7 @@ fun TarjetaPersonalVertical(
 
 @Composable
 fun TarjetaPersonalHorizontal(
-    email: String, nombre: String, info: String, modifier: Modifier = Modifier
+   nombre: String, info: String, modifier: Modifier = Modifier
 ) {
     val image = painterResource(R.drawable.avatar)
 
@@ -216,15 +217,15 @@ fun TarjetaPersonalHorizontal(
 
                     }
                     Row {
-
-                        Text(
-                            text = "\uD83D\uDCE7 $email",
-                            modifier = modifier
-                                .fillMaxWidth()
-                                .padding(8.dp),
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 18.sp
-                        )
+                        BotonEmail()
+                       // Text(
+                         //   text = "\uD83D\uDCE7 $email",
+                           // modifier = modifier
+                           //     .fillMaxWidth()
+                           //     .padding(8.dp),
+                          //  fontWeight = FontWeight.Bold,
+                          //  fontSize = 18.sp
+                      //  )
 
                     }
 
@@ -350,9 +351,11 @@ fun BotonEmail() {
     val localContext = LocalContext.current
     TextButton(onClick = {
 
-        val intento = Intent(Intent.ACTION_DIAL)
-        intento.data = Uri.parse(email)
-        startActivity(localContext, intento, null)
+        val intentoMail = Intent(Intent.ACTION_SEND, Uri.parse(email))
+        intentoMail.type = "plain/text"
+        intentoMail.putExtra(Intent.EXTRA_SUBJECT,"titulo del mail")
+        intentoMail.putExtra(Intent.EXTRA_EMAIL, arrayOf("rcdavilin@gmail.com"))
+        startActivity(localContext, intentoMail, null)
     }) {
         Text(
             text = "\uD83D\uDCE7 $email",
@@ -372,15 +375,11 @@ fun ProductoFinal() {
     BoxWithConstraints(Modifier.size(750.dp)) {
         if (maxWidth < 500.dp) {
             TarjetaPersonalVertical(
-
-                "David@gmail.com",
                 "David Martin Jiménez",
                 "Estudiante \n Ies Virgen de la Paloma \n 2ºCurso de DAM "
             )
         } else {
             TarjetaPersonalHorizontal(
-
-                "David@gmail.com",
                 "David Martin Jiménez",
                 "Estudiante \n Ies Virgen de la Paloma \n 2ºCurso de DAM "
             )
