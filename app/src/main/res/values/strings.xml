@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AppTarjetaPresentacion</string>
+    <string name="nombre">David Martin Jiménez</string>
+    <string name="informacion">"Estudiante \n Ies Virgen de la Paloma \n 2ºCurso de DAM "</string>
+    <string name="nombre1">David Martin Jiménez</string>
+    <string name="informacion1">"Estudiante \n Ies Virgen de la Paloma \n 2ºCurso de DAM "</string>
 </resources>

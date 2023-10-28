@@ -28,6 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -100,15 +101,7 @@ fun TarjetaPersonalVertical(
                 }
                 Row {
                     BotonEmail()
-                    //Text(
-                      //  text = "\uD83D\uDCE7 $email",
-                       // modifier = modifier
-                       //     .fillMaxWidth()
-                       //     .padding(16.dp),
-                      //  fontWeight = FontWeight.Bold,
-                      //  fontSize = 18.sp
 
-                   // )
 
 
                 }
@@ -218,14 +211,7 @@ fun TarjetaPersonalHorizontal(
                     }
                     Row {
                         BotonEmail()
-                       // Text(
-                         //   text = "\uD83D\uDCE7 $email",
-                           // modifier = modifier
-                           //     .fillMaxWidth()
-                           //     .padding(8.dp),
-                          //  fontWeight = FontWeight.Bold,
-                          //  fontSize = 18.sp
-                      //  )
+
 
                     }
 
@@ -243,7 +229,7 @@ fun TarjetaPersonalHorizontal(
                         modifier = Modifier
                             .size(190.dp)
                             .clip(CircleShape)
-                            .padding(8.dp)
+                            .padding(20.dp)
 
 
                     )
@@ -354,7 +340,7 @@ fun BotonEmail() {
         val intentoMail = Intent(Intent.ACTION_SEND, Uri.parse(email))
         intentoMail.type = "plain/text"
         intentoMail.putExtra(Intent.EXTRA_SUBJECT,"titulo del mail")
-        intentoMail.putExtra(Intent.EXTRA_EMAIL, arrayOf("rcdavilin@gmail.com"))
+        intentoMail.putExtra(Intent.EXTRA_EMAIL, arrayOf("correo@gmail.com"))
         startActivity(localContext, intentoMail, null)
     }) {
         Text(
@@ -375,13 +361,13 @@ fun ProductoFinal() {
     BoxWithConstraints(Modifier.size(750.dp)) {
         if (maxWidth < 500.dp) {
             TarjetaPersonalVertical(
-                "David Martin Jiménez",
-                "Estudiante \n Ies Virgen de la Paloma \n 2ºCurso de DAM "
+                stringResource(R.string.nombre),
+                stringResource(R.string.informacion)
             )
         } else {
             TarjetaPersonalHorizontal(
-                "David Martin Jiménez",
-                "Estudiante \n Ies Virgen de la Paloma \n 2ºCurso de DAM "
+                stringResource(R.string.nombre1),
+                stringResource(R.string.informacion1)
             )
         }
     }
