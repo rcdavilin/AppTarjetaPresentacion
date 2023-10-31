@@ -348,8 +348,9 @@ fun BotonEmail() {
     val localContext = LocalContext.current
     TextButton(onClick = {
 
-        val intentoMail = Intent(Intent.ACTION_SEND, Uri.parse(email))
-        intentoMail.type = "plain/text"
+        val intentoMail = Intent(Intent.ACTION_SEND)
+        intentoMail.setDataAndType(Uri.parse(email), "plain/text") 
+
         intentoMail.putExtra(Intent.EXTRA_SUBJECT,"")
         intentoMail.putExtra(Intent.EXTRA_EMAIL, arrayOf("david.martn4@educa.madrid.org"))
         startActivity(localContext, intentoMail, null)
