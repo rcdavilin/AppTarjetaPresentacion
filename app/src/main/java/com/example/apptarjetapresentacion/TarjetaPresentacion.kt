@@ -31,6 +31,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -55,7 +56,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TarjetaPersonalVertical(
-     nombre: String, info: String, modifier: Modifier = Modifier
+    nombre: String, info: String, modifier: Modifier = Modifier
 ) {
     val image = painterResource(R.drawable.avatar)
 
@@ -164,7 +165,7 @@ fun TarjetaPersonalVertical(
 
 @Composable
 fun TarjetaPersonalHorizontal(
-   nombre: String, info: String, modifier: Modifier = Modifier
+    nombre: String, info: String, modifier: Modifier = Modifier
 ) {
     val image = painterResource(R.drawable.avatar)
 
@@ -289,7 +290,7 @@ fun TarjetaPreview() {
 
 @Composable
 fun BotonNumero() {
-    val numeroTelefono = 666666666
+    val numeroTelefono = "666666666"
     val localContext = LocalContext.current
     TextButton(onClick = {
         val textPhone = "tel: $numeroTelefono"
@@ -298,12 +299,17 @@ fun BotonNumero() {
         startActivity(localContext, intento, null)
     }) {
         Text(
-            text = "\uD83D\uDCF1 $numeroTelefono",
+            text = "\uD83D\uDCF1"
+        )
+        Text(
+            text = numeroTelefono,
             fontSize = 18.sp,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(4.dp),
-            textAlign = TextAlign.Left
+            textAlign = TextAlign.Left,
+            color = Color.Black,
+            textDecoration = TextDecoration.Underline
         )
 
     }
@@ -320,12 +326,17 @@ fun BotonURL() {
         startActivity(localContext, intento, null)
     }) {
         Text(
-            text = "\uD83C\uDF10 $url",
+            text = "\uD83C\uDF10"
+        )
+        Text(
+            text = url,
             fontSize = 15.sp,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(4.dp),
-            textAlign = TextAlign.Left
+            textAlign = TextAlign.Left,
+            color = Color.Black,
+            textDecoration = TextDecoration.Underline
         )
 
     }
@@ -339,17 +350,24 @@ fun BotonEmail() {
 
         val intentoMail = Intent(Intent.ACTION_SEND, Uri.parse(email))
         intentoMail.type = "plain/text"
-        intentoMail.putExtra(Intent.EXTRA_SUBJECT,"titulo del mail")
-        intentoMail.putExtra(Intent.EXTRA_EMAIL, arrayOf("correo@gmail.com"))
+        intentoMail.putExtra(Intent.EXTRA_SUBJECT,"")
+        intentoMail.putExtra(Intent.EXTRA_EMAIL, arrayOf("david.martn4@educa.madrid.org"))
         startActivity(localContext, intentoMail, null)
     }) {
         Text(
-            text = "\uD83D\uDCE7 $email",
+            text = "\uD83D\uDCE7 "
+        )
+
+        Text(
+            text = email,
+
             fontSize = 18.sp,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(4.dp),
-            textAlign = TextAlign.Left
+            textAlign = TextAlign.Left,
+            color = Color.Black,
+            textDecoration = TextDecoration.Underline
         )
 
     }
@@ -362,7 +380,7 @@ fun ProductoFinal() {
         if (maxWidth < 500.dp) {
             TarjetaPersonalVertical(
                 stringResource(R.string.nombre),
-                stringResource(R.string.informacion)
+                stringResource(R.string.Informacion)
             )
         } else {
             TarjetaPersonalHorizontal(
